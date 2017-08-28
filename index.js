@@ -41,6 +41,7 @@ const ScrollableTabView = React.createClass({
     scrollWithoutAnimation: PropTypes.bool,
     locked: PropTypes.bool,
     prerenderingSiblingsNumber: PropTypes.number,
+    keyboardShouldPersistTaps: PropTypes.oneOf(['never', 'always', 'handled'])
   },
 
   getDefaultProps() {
@@ -54,6 +55,7 @@ const ScrollableTabView = React.createClass({
       scrollWithoutAnimation: false,
       locked: false,
       prerenderingSiblingsNumber: 0,
+      keyboardShouldPersistTaps: 'never'
     };
   },
 
@@ -166,6 +168,7 @@ const ScrollableTabView = React.createClass({
         directionalLockEnabled
         alwaysBounceVertical={false}
         keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}
         {...this.props.contentProps}
       >
           {scenes}
